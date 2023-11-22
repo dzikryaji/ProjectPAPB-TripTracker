@@ -40,8 +40,6 @@ public class MainActivity extends AppCompatActivity {
                 } else if (item.getItemId() == R.id.nav_profile) {
                     setCurrentFragment(profileFragment);
                 }
-
-
                 return true;
             }
         });

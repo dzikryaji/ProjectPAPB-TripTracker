@@ -1,10 +1,12 @@
 package das.mobile.triptracker;
 
-import android.content.Intent;
 import android.os.Bundle;
-import android.view.View;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.fragment.app.Fragment;
+
+import java.util.ArrayList;
+import java.util.List;
 
 import das.mobile.triptracker.databinding.ActivityOnBoardingBinding;
 
@@ -17,14 +19,12 @@ public class OnBoardingActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         binding = ActivityOnBoardingBinding.inflate(getLayoutInflater());
         setContentView(binding.getRoot());
-        binding.tvNama.setText("On Boarding Activity");
-        binding.btnNext.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Intent intent = new Intent(OnBoardingActivity.this, MainActivity.class);
-                startActivity(intent);
-                finish();
-            }
-        });
+
+        List<Fragment> fragments = new ArrayList<>();
+        fragments.add(new OnBoarding1Fragment());
+        fragments.add(new OnBoarding2Fragment());
+        fragments.add(new OnBoarding3Fragment());
+        OnBoardingPagerAdapter pagerAdapter = new OnBoardingPagerAdapter(this, fragments);
+        binding.viewpager.setAdapter(pagerAdapter);
     }
 }
