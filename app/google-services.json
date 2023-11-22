@@ -1,0 +1,30 @@
+{
+  "project_info": {
+    "project_number": "965509913823",
+    "firebase_url": "https://project-papb-7de12-default-rtdb.asia-southeast1.firebasedatabase.app",
+    "project_id": "project-papb-7de12",
+    "storage_bucket": "project-papb-7de12.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:965509913823:android:a3be256b177080bfbfdd6a",
+        "android_client_info": {
+          "package_name": "das.mobile.triptracker"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBejM9EvHnSLRBqWPBvsnJQjOtyyBc7gx8"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
