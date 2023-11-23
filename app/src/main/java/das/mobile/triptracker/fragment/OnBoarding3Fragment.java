@@ -1,21 +1,22 @@
-package das.mobile.triptracker;
+package das.mobile.triptracker.fragment;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
 import androidx.fragment.app.Fragment;
-import androidx.recyclerview.widget.LinearLayoutManager;
 
-import das.mobile.triptracker.databinding.FragmentNewsBinding;
+import das.mobile.triptracker.activity.MainActivity;
+import das.mobile.triptracker.databinding.FragmentOnBoarding3Binding;
 
 /**
  * A simple {@link Fragment} subclass.
- * Use the {@link NewsFragment#newInstance} factory method to
+ * Use the {@link OnBoarding3Fragment#newInstance} factory method to
  * create an instance of this fragment.
  */
-public class NewsFragment extends Fragment {
+public class OnBoarding3Fragment extends Fragment {
 
     // TODO: Rename parameter arguments, choose names that match
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
@@ -26,7 +27,7 @@ public class NewsFragment extends Fragment {
     private String mParam1;
     private String mParam2;
 
-    public NewsFragment() {
+    public OnBoarding3Fragment() {
         // Required empty public constructor
     }
 
@@ -36,11 +37,11 @@ public class NewsFragment extends Fragment {
      *
      * @param param1 Parameter 1.
      * @param param2 Parameter 2.
-     * @return A new instance of fragment NewsFragment.
+     * @return A new instance of fragment OnBoarding3Fragment.
      */
     // TODO: Rename and change types and number of parameters
-    public static NewsFragment newInstance(String param1, String param2) {
-        NewsFragment fragment = new NewsFragment();
+    public static OnBoarding3Fragment newInstance(String param1, String param2) {
+        OnBoarding3Fragment fragment = new OnBoarding3Fragment();
         Bundle args = new Bundle();
         args.putString(ARG_PARAM1, param1);
         args.putString(ARG_PARAM2, param2);
@@ -60,9 +61,18 @@ public class NewsFragment extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        FragmentNewsBinding binding = FragmentNewsBinding.inflate(inflater, container, false);
-        binding.rvNews.setLayoutManager(new LinearLayoutManager(getActivity()));
-        binding.rvNews.setAdapter(new NewsAdapter(15));
+        // Inflate the layout for this fragment
+        FragmentOnBoarding3Binding binding = FragmentOnBoarding3Binding.inflate(inflater, container, false);
+
+        binding.btnNext.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(getActivity(), MainActivity.class);
+                startActivity(intent);
+                getActivity().finish();
+            }
+        });
+
         return binding.getRoot();
     }
 }

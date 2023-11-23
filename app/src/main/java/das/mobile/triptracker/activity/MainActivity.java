@@ -1,4 +1,4 @@
-package das.mobile.triptracker;
+package das.mobile.triptracker.activity;
 
 import android.os.Bundle;
 import android.view.MenuItem;
@@ -9,7 +9,12 @@ import androidx.fragment.app.Fragment;
 
 import com.google.android.material.navigation.NavigationBarView;
 
+import das.mobile.triptracker.R;
 import das.mobile.triptracker.databinding.ActivityMainBinding;
+import das.mobile.triptracker.fragment.HomeFragment;
+import das.mobile.triptracker.fragment.NewsFragment;
+import das.mobile.triptracker.fragment.ProfileFragment;
+import das.mobile.triptracker.fragment.SearchFragment;
 
 public class MainActivity extends AppCompatActivity {
 

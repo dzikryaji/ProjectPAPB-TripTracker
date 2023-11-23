@@ -1,4 +1,4 @@
-package das.mobile.triptracker;
+package das.mobile.triptracker.adapter;
 
 import android.view.LayoutInflater;
 import android.view.ViewGroup;

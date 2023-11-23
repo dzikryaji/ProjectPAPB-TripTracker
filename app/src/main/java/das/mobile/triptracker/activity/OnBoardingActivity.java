@@ -1,4 +1,4 @@
-package das.mobile.triptracker;
+package das.mobile.triptracker.activity;
 
 import android.os.Bundle;
 
@@ -8,7 +8,11 @@ import androidx.fragment.app.Fragment;
 import java.util.ArrayList;
 import java.util.List;
 
+import das.mobile.triptracker.adapter.OnBoardingPagerAdapter;
 import das.mobile.triptracker.databinding.ActivityOnBoardingBinding;
+import das.mobile.triptracker.fragment.OnBoarding1Fragment;
+import das.mobile.triptracker.fragment.OnBoarding2Fragment;
+import das.mobile.triptracker.fragment.OnBoarding3Fragment;
 
 public class OnBoardingActivity extends AppCompatActivity {
 
