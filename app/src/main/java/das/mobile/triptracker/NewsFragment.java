@@ -6,6 +6,9 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import androidx.fragment.app.Fragment;
+import androidx.recyclerview.widget.LinearLayoutManager;
+
+import das.mobile.triptracker.databinding.FragmentNewsBinding;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -57,7 +60,9 @@ public class NewsFragment extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_news, container, false);
+        FragmentNewsBinding binding = FragmentNewsBinding.inflate(inflater, container, false);
+        binding.rvNews.setLayoutManager(new LinearLayoutManager(getActivity()));
+        binding.rvNews.setAdapter(new NewsAdapter(15));
+        return binding.getRoot();
     }
 }

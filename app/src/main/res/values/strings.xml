@@ -1,5 +1,6 @@
 <resources>
     <string name="app_name">TripTracker</string>
     <!-- TODO: Remove or change this placeholder text -->
-    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="username">\@belpawss · 8/4/19</string>
+    <string name="lorem">Lorem ipsum dolor sit amet, consectetur adipiscing elit. In at feugiat ipsum. Maecenas vitae tellus eu urna vestibulum imperdiet non ac augue. Proin commodo, neque non bibendum pharetra, ante nibh faucibus tortor, ac sollicitudin purus nisi ac enim. Integer condimentum facilisis ex, eu finibus justo laoreet non. Sed et odio sem. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Phasellus vitae orci nisl. Duis sed lectus mi.</string>
 </resources>

@@ -8,7 +8,7 @@ import android.view.ViewGroup;
 
 import androidx.fragment.app.Fragment;
 
-import das.mobile.triptracker.databinding.FragmentOnBoarding2Binding;
+import das.mobile.triptracker.databinding.FragmentOnBoarding3Binding;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -61,7 +61,7 @@ public class OnBoarding3Fragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        FragmentOnBoarding2Binding binding = FragmentOnBoarding2Binding.inflate(inflater, container, false);
+        FragmentOnBoarding3Binding binding = FragmentOnBoarding3Binding.inflate(inflater, container, false);
 
         binding.btnNext.setOnClickListener(new View.OnClickListener() {
             @Override

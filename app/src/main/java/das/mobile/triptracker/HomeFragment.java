@@ -6,6 +6,7 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import androidx.fragment.app.Fragment;
+import androidx.recyclerview.widget.LinearLayoutManager;
 
 import das.mobile.triptracker.databinding.FragmentHomeBinding;
 
@@ -59,8 +60,9 @@ public class HomeFragment extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        // Inflate the layout for this fragment
         FragmentHomeBinding binding = FragmentHomeBinding.inflate(inflater, container, false);
+        binding.rvHome.setLayoutManager(new LinearLayoutManager(getActivity()));
+        binding.rvHome.setAdapter(new PostAdapter(10));
         return binding.getRoot();
     }
 }
