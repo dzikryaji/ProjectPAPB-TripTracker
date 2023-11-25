@@ -9,7 +9,7 @@ import androidx.fragment.app.Fragment;
 
 import com.google.android.material.tabs.TabLayoutMediator;
 
-import das.mobile.triptracker.ProfilePagerAdapter;
+import das.mobile.triptracker.adapter.ProfilePagerAdapter;
 import das.mobile.triptracker.databinding.FragmentProfileBinding;
 
 /**

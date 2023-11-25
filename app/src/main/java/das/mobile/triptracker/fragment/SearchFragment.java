@@ -6,8 +6,10 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import androidx.fragment.app.Fragment;
+import androidx.recyclerview.widget.LinearLayoutManager;
 
-import das.mobile.triptracker.R;
+import das.mobile.triptracker.adapter.PostAdapter;
+import das.mobile.triptracker.databinding.FragmentSearchBinding;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -60,6 +62,9 @@ public class SearchFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_search, container, false);
+        FragmentSearchBinding binding = FragmentSearchBinding.inflate(inflater, container, false);
+        binding.rvSearch.setLayoutManager(new LinearLayoutManager(getActivity()));
+        binding.rvSearch.setAdapter(new PostAdapter(12));
+        return binding.getRoot();
     }
 }

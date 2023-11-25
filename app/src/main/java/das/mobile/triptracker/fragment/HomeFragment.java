@@ -1,5 +1,6 @@
 package das.mobile.triptracker.fragment;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -8,6 +9,7 @@ import android.view.ViewGroup;
 import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.LinearLayoutManager;
 
+import das.mobile.triptracker.activity.AddPostActivity;
 import das.mobile.triptracker.adapter.PostAdapter;
 import das.mobile.triptracker.databinding.FragmentHomeBinding;
 
@@ -64,6 +66,13 @@ public class HomeFragment extends Fragment {
         FragmentHomeBinding binding = FragmentHomeBinding.inflate(inflater, container, false);
         binding.rvHome.setLayoutManager(new LinearLayoutManager(getActivity()));
         binding.rvHome.setAdapter(new PostAdapter(10));
+        binding.fabAdd.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(getActivity(), AddPostActivity.class);
+                startActivity(intent);
+            }
+        });
         return binding.getRoot();
     }
 }

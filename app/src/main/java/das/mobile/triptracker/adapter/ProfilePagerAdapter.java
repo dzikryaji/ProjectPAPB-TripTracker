@@ -1,4 +1,4 @@
-package das.mobile.triptracker;
+package das.mobile.triptracker.adapter;
 
 import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
