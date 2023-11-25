@@ -6,8 +6,10 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import androidx.fragment.app.Fragment;
+import androidx.recyclerview.widget.LinearLayoutManager;
 
-import das.mobile.triptracker.R;
+import das.mobile.triptracker.adapter.PostAdapter;
+import das.mobile.triptracker.databinding.FragmentSavedBinding;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -60,6 +62,9 @@ public class SavedFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_saved, container, false);
+        FragmentSavedBinding binding = FragmentSavedBinding.inflate(inflater, container, false);
+        binding.rvSaved.setLayoutManager(new LinearLayoutManager(getActivity()));
+        binding.rvSaved.setAdapter(new PostAdapter(15, true, false));
+        return binding.getRoot();
     }
 }

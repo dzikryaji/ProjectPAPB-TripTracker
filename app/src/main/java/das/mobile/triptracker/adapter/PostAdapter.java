@@ -11,11 +11,18 @@ import das.mobile.triptracker.databinding.ItemPostBinding;
 public class PostAdapter extends RecyclerView.Adapter<PostAdapter.PostViewHolder> {
 
     int size;
+    boolean isSaved = false;
+    boolean isUserPost = false;
 
     public PostAdapter(int size) {
         this.size = size;
     }
 
+    public PostAdapter(int size, boolean isSaved, boolean isUserPost) {
+        this.size = size;
+        this.isSaved = isSaved;
+        this.isUserPost = isUserPost;
+    }
     @NonNull
     @Override
     public PostAdapter.PostViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
@@ -24,7 +31,11 @@ public class PostAdapter extends RecyclerView.Adapter<PostAdapter.PostViewHolder
 
     @Override
     public void onBindViewHolder(@NonNull PostAdapter.PostViewHolder holder, int position) {
-
+        if (isSaved){
+            holder.binding.btnPost.setText("Saved");
+        } else if (isUserPost) {
+            holder.binding.btnPost.setText("Edit");
+        }
     }
 
     @Override
@@ -34,8 +45,11 @@ public class PostAdapter extends RecyclerView.Adapter<PostAdapter.PostViewHolder
 
     class PostViewHolder extends RecyclerView.ViewHolder{
 
+        ItemPostBinding binding;
+
         public PostViewHolder(@NonNull ItemPostBinding binding) {
             super(binding.getRoot());
+            this.binding = binding;
         }
     }
 }
