@@ -39,14 +39,44 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="@+id/tv_name" />
 
-    <TextView
-        android:id="@+id/tv_username_and_date"
-        android:layout_width="wrap_content"
+    <LinearLayout
+        android:id="@+id/ll_username"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:text="@string/username"
-        android:textSize="16sp"
+        android:orientation="horizontal"
+        app:layout_constraintEnd_toStartOf="@+id/btn_post"
         app:layout_constraintStart_toStartOf="@id/tv_name"
-        app:layout_constraintTop_toBottomOf="@id/tv_name"/>
+        app:layout_constraintTop_toBottomOf="@id/tv_name">
+
+        <TextView
+            android:id="@+id/tv_username"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:maxWidth="80dp"
+            android:text="\@usersdfkasdkfjahsklf"
+            android:maxLines="1"
+            android:ellipsize="end"
+
+            android:textSize="16sp"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="·"
+            android:textSize="16sp"
+            android:layout_marginHorizontal="4dp"/>
+
+        <TextView
+            android:id="@+id/tv_date"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:text="99/99/99"
+            android:maxLines="1"
+            android:layout_weight="1"
+            android:textSize="16sp" />
+
+    </LinearLayout>
+
 
     <TextView
         android:id="@+id/tv_post"
@@ -57,8 +87,8 @@
         android:layout_marginTop="14dp"
         android:maxLines="4"
         android:ellipsize="end"
-        app:layout_constraintStart_toStartOf="@id/tv_username_and_date"
-        app:layout_constraintTop_toBottomOf="@id/tv_username_and_date"
+        app:layout_constraintStart_toStartOf="@id/ll_username"
+        app:layout_constraintTop_toBottomOf="@id/ll_username"
         app:layout_constraintEnd_toEndOf="parent"/>
     
     <LinearLayout
