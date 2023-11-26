@@ -45,8 +45,8 @@
         android:layout_marginStart="10dp"
         android:background="@drawable/bg_add_post"
         android:gravity="top"
-        android:lineHeight="14dp"
         android:hint="Write Something here.."
+        android:lineHeight="14dp"
         android:minHeight="170dp"
         android:padding="14dp"
         android:textSize="12sp"
@@ -56,10 +56,57 @@
 
 
     <LinearLayout
+        android:layout_width="0dp"
+        android:layout_height="110dp"
+        android:layout_marginTop="14dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="@id/et_post"
+        app:layout_constraintTop_toBottomOf="@id/et_post">
+
+        <androidx.cardview.widget.CardView
+            android:id="@+id/cv_image_post1"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_marginEnd="8dp"
+            android:layout_weight="1"
+            android:visibility="gone"
+            app:cardCornerRadius="12dp"
+            tools:visibility="visible">
+
+            <ImageView
+                android:id="@+id/iv_image_post1"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:scaleType="centerCrop"
+                android:src="@drawable/bg_onboarding1" />
+
+        </androidx.cardview.widget.CardView>
+
+        <androidx.cardview.widget.CardView
+            android:id="@+id/cv_image_post2"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:visibility="gone"
+            app:cardCornerRadius="12dp"
+            tools:visibility="visible">
+
+            <ImageView
+                android:id="@+id/iv_image_post2"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:scaleType="centerCrop"
+                android:src="@drawable/bg_onboarding2" />
+
+        </androidx.cardview.widget.CardView>
+
+    </LinearLayout>
+
+    <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:orientation="horizontal"
         android:gravity="center_vertical"
+        android:orientation="horizontal"
         app:layout_constraintBottom_toBottomOf="parent">
 
         <ImageView
@@ -72,9 +119,10 @@
             android:id="@+id/iv_location"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:src="@drawable/ic_location"
-            android:layout_marginStart="16dp"/>
+            android:layout_marginStart="16dp"
+            android:src="@drawable/ic_location" />
 
     </LinearLayout>
+
 
 </androidx.constraintlayout.widget.ConstraintLayout>
