@@ -1,6 +1,5 @@
 package das.mobile.triptracker.fragment;
 
-import android.content.Intent;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -8,15 +7,14 @@ import android.view.ViewGroup;
 
 import androidx.fragment.app.Fragment;
 
-import das.mobile.triptracker.activity.LoginActivity;
-import das.mobile.triptracker.databinding.FragmentOnBoarding3Binding;
+import das.mobile.triptracker.R;
 
 /**
  * A simple {@link Fragment} subclass.
- * Use the {@link OnBoarding3Fragment#newInstance} factory method to
+ * Use the {@link OnBoarding4Fragment#newInstance} factory method to
  * create an instance of this fragment.
  */
-public class OnBoarding3Fragment extends Fragment {
+public class OnBoarding4Fragment extends Fragment {
 
     // TODO: Rename parameter arguments, choose names that match
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
@@ -27,7 +25,7 @@ public class OnBoarding3Fragment extends Fragment {
     private String mParam1;
     private String mParam2;
 
-    public OnBoarding3Fragment() {
+    public OnBoarding4Fragment() {
         // Required empty public constructor
     }
 
@@ -37,11 +35,11 @@ public class OnBoarding3Fragment extends Fragment {
      *
      * @param param1 Parameter 1.
      * @param param2 Parameter 2.
-     * @return A new instance of fragment OnBoarding3Fragment.
+     * @return A new instance of fragment OnBoarding4Fragment.
      */
     // TODO: Rename and change types and number of parameters
-    public static OnBoarding3Fragment newInstance(String param1, String param2) {
-        OnBoarding3Fragment fragment = new OnBoarding3Fragment();
+    public static OnBoarding4Fragment newInstance(String param1, String param2) {
+        OnBoarding4Fragment fragment = new OnBoarding4Fragment();
         Bundle args = new Bundle();
         args.putString(ARG_PARAM1, param1);
         args.putString(ARG_PARAM2, param2);
@@ -62,17 +60,7 @@ public class OnBoarding3Fragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        FragmentOnBoarding3Binding binding = FragmentOnBoarding3Binding.inflate(inflater, container, false);
+        return inflater.inflate(R.layout.fragment_on_boarding4, container, false);
 
-        binding.btnNext.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Intent intent = new Intent(getActivity(), LoginActivity.class);
-                startActivity(intent);
-                getActivity().finish();
-            }
-        });
-
-        return binding.getRoot();
     }
 }

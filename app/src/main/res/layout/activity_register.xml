@@ -66,6 +66,7 @@
             android:layout_height="50dp">
 
             <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/et_firstName"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:hint="Enter your first name"
@@ -86,6 +87,7 @@
             android:layout_height="50dp">
 
             <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/et_lastName"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:hint="Enter your last name"
@@ -106,6 +108,7 @@
             android:layout_height="50dp">
 
             <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/et_phone"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:hint="Enter your phone number"
@@ -126,6 +129,7 @@
             android:layout_height="50dp">
 
             <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/et_age"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:hint="Enter your age"
@@ -146,6 +150,7 @@
             android:layout_height="50dp">
 
             <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/et_email"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:hint="Enter your email"
@@ -166,14 +171,23 @@
             android:layout_height="50dp">
 
             <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/et_password"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:hint="Enter your password"
                 android:textSize="10sp" />
+
         </com.google.android.material.textfield.TextInputLayout>
 
+        <CheckBox
+            android:id="@+id/cb_accept"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textSize="10sp"
+            android:text="I accept term and condition" />
+
         <Button
-            android:id="@+id/btn_login"
+            android:id="@+id/btn_register"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="10dp"
@@ -182,6 +196,15 @@
             android:text="Create Account"
             android:textSize="16sp"
             app:layout_constraintTop_toBottomOf="@+id/tv_description" />
+
+        <TextView
+            android:id="@+id/tv_back"
+            android:layout_width="match_parent"
+            android:layout_height="20dp"
+            android:fontFamily="@font/poppins"
+            android:gravity="center"
+            android:text="Already have an account? Go back"
+            android:textSize="12sp" />
 
     </LinearLayout>
 

@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/bg_splashscreen"
+    android:orientation="vertical"
+    android:gravity="center"
+    tools:context=".fragment.OnBoarding4Fragment">
+
+    <ImageView
+        android:id="@+id/iv_logo"
+        android:layout_width="110dp"
+        android:layout_height="110dp"
+        android:src="@drawable/ic_logo"
+        android:layout_marginBottom="20dp"/>
+
+    <TextView
+        android:id="@+id/tv_main"
+        android:layout_width="295dp"
+        android:layout_height="wrap_content"
+        android:fontFamily="@font/poppins_bold"
+        android:gravity="center_horizontal|top"
+        android:text="Successfully"
+        android:textColor="#FFFFFF"
+        android:textSize="30sp" />
+
+    <TextView
+        android:id="@+id/tv_main2"
+        android:layout_width="295dp"
+        android:layout_height="wrap_content"
+        android:fontFamily="@font/poppins_bold"
+        android:gravity="center_horizontal|top"
+        android:text="created an account"
+        android:textColor="#FFFFFF"
+        android:textSize="25sp" />
+
+    <TextView
+        android:id="@+id/tv_description"
+        android:layout_width="295dp"
+        android:layout_height="wrap_content"
+        android:fontFamily="@font/poppins"
+        android:gravity="center_horizontal|top"
+        android:text="After this you can explore any place you want enjoy it!"
+        android:textColor="#FFFFFF" />
+
+    <Button
+        android:id="@+id/btn_login"
+        android:layout_width="295dp"
+        android:layout_height="55dp"
+        android:layout_marginTop="150dp"
+        android:backgroundTint="#FFFFFF"
+        android:paddingHorizontal="15dp"
+        android:paddingVertical="12dp"
+        android:text="Let’s Explore"
+        android:textColor="#164641"
+        android:textSize="14sp" />
+
+</LinearLayout>
