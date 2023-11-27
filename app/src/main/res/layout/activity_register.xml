@@ -197,14 +197,30 @@
             android:textSize="16sp"
             app:layout_constraintTop_toBottomOf="@+id/tv_description" />
 
-        <TextView
-            android:id="@+id/tv_back"
+        <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="20dp"
-            android:fontFamily="@font/poppins"
-            android:gravity="center"
-            android:text="Already have an account? Go back"
-            android:textSize="12sp" />
+            android:layout_height="match_parent"
+            android:orientation="horizontal"
+            android:gravity="center">
+
+            <TextView
+                android:id="@+id/tv_desc"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/poppins"
+                android:gravity="end"
+                android:text="Already have an account?"
+                android:textSize="12sp" />
+
+            <TextView
+                android:id="@+id/tv_back"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/poppins_semibold"
+                android:text="Go back"
+                android:layout_marginStart="5dp"
+                android:textSize="12sp" />
+        </LinearLayout>
 
     </LinearLayout>
 

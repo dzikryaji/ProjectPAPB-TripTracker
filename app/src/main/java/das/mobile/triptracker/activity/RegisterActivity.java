@@ -38,7 +38,7 @@ public class RegisterActivity extends AppCompatActivity {
 
                 if (firstName.isEmpty() || lastName.isEmpty() || phone.isEmpty() || age.isEmpty() || email.isEmpty() || password.isEmpty()) {
                     Toast.makeText(getApplicationContext(), "Ada data yang masih kosong", Toast.LENGTH_SHORT).show();
-                } else {
+                } else if (binding.cbAccept.isChecked()){
                     firebaseDB = FirebaseDatabase.getInstance().getReference("users");
                     firebaseDB.child(email).child("firstName").setValue(firstName);
                     firebaseDB.child(email).child("lastName").setValue(lastName);
@@ -51,8 +51,28 @@ public class RegisterActivity extends AppCompatActivity {
                     Intent intent = new Intent(getApplicationContext(), LoginActivity.class);
                     startActivity(intent);
                     finish();
+                } else {
+                    Toast.makeText(getApplicationContext(), "Ceklis syarat dan ketentuan", Toast.LENGTH_SHORT).show();
                 }
 
+            }
+        });
+
+        binding.ivBack.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(getApplicationContext(), LoginActivity.class);
+                startActivity(intent);
+                finish();
+            }
+        });
+
+        binding.tvBack.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(getApplicationContext(), LoginActivity.class);
+                startActivity(intent);
+                finish();
             }
         });
     }

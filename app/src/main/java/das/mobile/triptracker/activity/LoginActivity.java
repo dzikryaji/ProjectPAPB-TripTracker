@@ -53,9 +53,11 @@ public class LoginActivity extends AppCompatActivity {
                             if (snapshot.child(email).exists()) {
                                 if (snapshot.child(email).child("password").getValue(String.class).equals(password)) {
                                     Toast.makeText(getApplicationContext(), "Login berhasil", Toast.LENGTH_SHORT).show();
-                                    Intent intent = new Intent(getApplicationContext(), MainActivity.class);
+                                    Intent intent = new Intent(getApplicationContext(), OnBoarding4Activity.class);
                                     startActivity(intent);
                                     finish();
+                                } else {
+                                    Toast.makeText(getApplicationContext(), "Password salah", Toast.LENGTH_SHORT).show();
                                 }
                             } else {
                                 Toast.makeText(getApplicationContext(), "Data belum terdaftar", Toast.LENGTH_SHORT).show();
