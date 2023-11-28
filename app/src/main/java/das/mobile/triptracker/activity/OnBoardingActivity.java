@@ -1,6 +1,8 @@
 package das.mobile.triptracker.activity;
 
+import android.os.Build;
 import android.os.Bundle;
+import android.view.WindowManager;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.Fragment;
@@ -23,6 +25,11 @@ public class OnBoardingActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         binding = ActivityOnBoardingBinding.inflate(getLayoutInflater());
         setContentView(binding.getRoot());
+
+        // make status bar transparent
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.KITKAT) {
+            getWindow().setFlags(WindowManager.LayoutParams.FLAG_LAYOUT_NO_LIMITS,WindowManager.LayoutParams.FLAG_LAYOUT_NO_LIMITS);
+        }
 
         List<Fragment> fragments = new ArrayList<>();
         fragments.add(new OnBoarding1Fragment());

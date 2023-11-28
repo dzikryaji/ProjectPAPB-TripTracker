@@ -23,6 +23,7 @@
             android:exported="false" />
         <activity
             android:name=".activity.LoginActivity"
+            android:theme="@style/Theme.TripTracker.NoActionBarAndStatusBar"
             android:exported="false" />
         <activity
             android:name=".activity.AddPostActivity"
@@ -30,6 +31,7 @@
             android:windowSoftInputMode="adjustResize" />
         <activity
             android:name=".activity.OnBoardingActivity"
+            android:theme="@style/Theme.TripTracker.NoActionBarAndStatusBar"
             android:exported="false" />
         <activity
             android:name=".activity.SplashScreenActivity"
