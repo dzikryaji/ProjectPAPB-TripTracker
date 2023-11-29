@@ -23,7 +23,6 @@
             android:exported="false" />
         <activity
             android:name=".activity.LoginActivity"
-            android:theme="@style/Theme.TripTracker.NoActionBarAndStatusBar"
             android:exported="false" />
         <activity
             android:name=".activity.AddPostActivity"
@@ -35,7 +34,8 @@
             android:exported="false" />
         <activity
             android:name=".activity.SplashScreenActivity"
-            android:exported="true">
+            android:exported="true"
+            android:theme="@style/Theme.TripTracker.NoActionBarAndStatusBar">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
