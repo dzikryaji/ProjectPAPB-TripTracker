@@ -27,17 +27,18 @@
 
         <TextView
             android:id="@+id/tv_main"
-            android:layout_width="270dp"
-            android:layout_height="35dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
             android:fontFamily="@font/poppins_semibold"
             android:gravity="center_horizontal|top"
             android:text="Welcome to TripTracker"
+            android:textColor="@color/black"
             android:textSize="22sp" />
 
         <TextView
             android:id="@+id/tv_description"
-            android:layout_width="230dp"
-            android:layout_height="20dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
             android:layout_marginBottom="30dp"
             android:fontFamily="@font/poppins"
             android:gravity="center_horizontal|top"
@@ -47,58 +48,70 @@
         <TextView
             android:id="@+id/tv_email"
             android:layout_width="match_parent"
-            android:layout_height="20dp"
+            android:layout_height="wrap_content"
             android:fontFamily="@font/poppins"
             android:text="Email"
+            android:textColor="@color/grey"
             android:textSize="12sp" />
 
-        <com.google.android.material.textfield.TextInputLayout
+        <EditText
+            android:id="@+id/et_email"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginBottom="14dp">
-
-            <com.google.android.material.textfield.TextInputEditText
-                android:id="@+id/et_email"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:hint="Enter your email address"
-                android:textSize="10sp" />
-        </com.google.android.material.textfield.TextInputLayout>
+            android:layout_height="52dp"
+            android:layout_marginBottom="14dp"
+            android:background="@drawable/bg_et_register_login"
+            android:fontFamily="@font/poppins"
+            android:gravity="center_vertical"
+            android:hint="Enter your email address"
+            android:inputType="textEmailAddress"
+            android:maxLines="1"
+            android:paddingHorizontal="15dp"
+            android:paddingVertical="10dp"
+            android:textColor="@color/black"
+            android:textColorHint="@color/grey"
+            android:textSize="10sp" />
 
         <TextView
             android:id="@+id/tv_password"
             android:layout_width="match_parent"
-            android:layout_height="20dp"
+            android:layout_height="wrap_content"
             android:fontFamily="@font/poppins"
             android:text="Password"
+            android:textColor="@color/grey"
             android:textSize="12sp" />
 
-        <com.google.android.material.textfield.TextInputLayout
+        <EditText
+            android:id="@+id/et_password"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content">
-
-            <com.google.android.material.textfield.TextInputEditText
-                android:id="@+id/et_password"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:hint="Enter your password"
-                android:textSize="10sp" />
-        </com.google.android.material.textfield.TextInputLayout>
+            android:layout_height="52dp"
+            android:background="@drawable/bg_et_register_login"
+            android:fontFamily="@font/poppins"
+            android:gravity="center_vertical"
+            android:hint="Enter your password"
+            android:inputType="textPassword"
+            android:maxLines="1"
+            android:paddingHorizontal="15dp"
+            android:paddingVertical="10dp"
+            android:textColor="@color/black"
+            android:textColorHint="@color/grey"
+            android:textSize="10sp" />
 
         <TextView
             android:id="@+id/tv_forgotPassword"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:fontFamily="@font/poppins"
-            android:gravity="right|top"
-            android:text="Forgot password?"
-            android:textSize="11sp" />
+            android:gravity="center_vertical|end"
+            android:text="@string/forgot_password"
+            android:textColor="@color/dark_green"
+            android:textSize="12sp" />
 
         <Button
             android:id="@+id/btn_login"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="10dp"
+            android:fontFamily="@font/poppins"
             android:paddingHorizontal="20dp"
             android:paddingVertical="17dp"
             android:text="Login"
@@ -107,24 +120,24 @@
 
         <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content">
+            android:layout_height="wrap_content"
+            android:gravity="center">
 
             <TextView
-                android:id="@+id/tv_registration"
-                android:layout_width="200dp"
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:layout_marginEnd="6dp"
                 android:fontFamily="@font/poppins"
-                android:gravity="center_horizontal|top"
-                android:text="Doesn’t have account on dicover?"
-                android:textSize="11sp" />
+                android:text="Doesnt have account yet?"
+                android:textSize="12sp" />
 
             <TextView
                 android:id="@+id/tv_register"
-                android:layout_width="match_parent"
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:fontFamily="@font/poppins_bold"
+                android:fontFamily="@font/poppins_semibold"
                 android:text="Create Account"
-                android:textSize="11sp" />
+                android:textSize="12sp" />
         </LinearLayout>
 
     </LinearLayout>

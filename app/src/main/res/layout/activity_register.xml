@@ -1,227 +1,284 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical"
     tools:context=".activity.RegisterActivity">
 
-    <ImageView
-        android:id="@+id/iv_back"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginLeft="25dp"
-        android:layout_marginTop="45dp"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:srcCompat="@drawable/ic_back" />
-
-    <androidx.constraintlayout.widget.ConstraintLayout
-        android:id="@+id/constraintLayout"
-        android:layout_width="323dp"
-        android:layout_height="50dp"
-        android:layout_marginTop="100dp"
+    <LinearLayout
+        android:id="@+id/ll_top_bar"
+        android:layout_width="match_parent"
+        android:layout_height="?android:attr/actionBarSize"
+        android:gravity="center_vertical"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent">
 
-        <TextView
-            android:id="@+id/tv_main"
+        <ImageView
+            android:id="@+id/iv_back"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:fontFamily="@font/poppins_semibold"
-            android:text="Create account"
-            android:textSize="18sp"
+            android:layout_marginStart="24dp"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
+            app:layout_constraintTop_toTopOf="parent"
+            app:srcCompat="@drawable/ic_back" />
+    </LinearLayout>
 
-        <TextView
-            android:id="@+id/tv_description"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Lets started your journey"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/tv_main" />
-    </androidx.constraintlayout.widget.ConstraintLayout>
-
-    <LinearLayout
-        android:layout_width="323dp"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="15dp"
-        android:orientation="vertical"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/constraintLayout">
-
-        <TextView
-            android:id="@+id/tv_firstName"
-            android:layout_width="match_parent"
-            android:layout_height="20dp"
-            android:fontFamily="@font/poppins"
-            android:text="First Name"
-            android:textSize="12sp" />
-
-        <com.google.android.material.textfield.TextInputLayout
-            android:layout_width="match_parent"
-            android:layout_height="50dp">
-
-            <com.google.android.material.textfield.TextInputEditText
-                android:id="@+id/et_firstName"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:hint="Enter your first name"
-                android:textSize="10sp" />
-        </com.google.android.material.textfield.TextInputLayout>
-
-        <TextView
-            android:id="@+id/tv_lastName"
-            android:layout_width="match_parent"
-            android:layout_height="20dp"
-            android:layout_marginTop="12dp"
-            android:fontFamily="@font/poppins"
-            android:text="Last Name"
-            android:textSize="12sp" />
-
-        <com.google.android.material.textfield.TextInputLayout
-            android:layout_width="match_parent"
-            android:layout_height="50dp">
-
-            <com.google.android.material.textfield.TextInputEditText
-                android:id="@+id/et_lastName"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:hint="Enter your last name"
-                android:textSize="10sp" />
-        </com.google.android.material.textfield.TextInputLayout>
-
-        <TextView
-            android:id="@+id/tv_phone"
-            android:layout_width="match_parent"
-            android:layout_height="20dp"
-            android:layout_marginTop="12dp"
-            android:fontFamily="@font/poppins"
-            android:text="Phone"
-            android:textSize="12sp" />
-
-        <com.google.android.material.textfield.TextInputLayout
-            android:layout_width="match_parent"
-            android:layout_height="50dp">
-
-            <com.google.android.material.textfield.TextInputEditText
-                android:id="@+id/et_phone"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:hint="Enter your phone number"
-                android:textSize="10sp" />
-        </com.google.android.material.textfield.TextInputLayout>
-
-        <TextView
-            android:id="@+id/tv_age"
-            android:layout_width="match_parent"
-            android:layout_height="20dp"
-            android:layout_marginTop="12dp"
-            android:fontFamily="@font/poppins"
-            android:text="Age"
-            android:textSize="12sp" />
-
-        <com.google.android.material.textfield.TextInputLayout
-            android:layout_width="match_parent"
-            android:layout_height="50dp">
-
-            <com.google.android.material.textfield.TextInputEditText
-                android:id="@+id/et_age"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:hint="Enter your age"
-                android:textSize="10sp" />
-        </com.google.android.material.textfield.TextInputLayout>
-
-        <TextView
-            android:id="@+id/tv_email"
-            android:layout_width="match_parent"
-            android:layout_height="20dp"
-            android:layout_marginTop="12dp"
-            android:fontFamily="@font/poppins"
-            android:text="Email"
-            android:textSize="12sp" />
-
-        <com.google.android.material.textfield.TextInputLayout
-            android:layout_width="match_parent"
-            android:layout_height="50dp">
-
-            <com.google.android.material.textfield.TextInputEditText
-                android:id="@+id/et_email"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:hint="Enter your email"
-                android:textSize="10sp" />
-        </com.google.android.material.textfield.TextInputLayout>
-
-        <TextView
-            android:id="@+id/tv_password"
-            android:layout_width="match_parent"
-            android:layout_height="20dp"
-            android:layout_marginTop="12dp"
-            android:fontFamily="@font/poppins"
-            android:text="Password"
-            android:textSize="12sp" />
-
-        <com.google.android.material.textfield.TextInputLayout
-            android:layout_width="match_parent"
-            android:layout_height="50dp">
-
-            <com.google.android.material.textfield.TextInputEditText
-                android:id="@+id/et_password"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:hint="Enter your password"
-                android:textSize="10sp" />
-
-        </com.google.android.material.textfield.TextInputLayout>
-
-        <CheckBox
-            android:id="@+id/cb_accept"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:textSize="10sp"
-            android:text="I accept term and condition" />
-
-        <Button
-            android:id="@+id/btn_register"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="10dp"
-            android:paddingHorizontal="20dp"
-            android:paddingVertical="17dp"
-            android:text="Create Account"
-            android:textSize="16sp"
-            app:layout_constraintTop_toBottomOf="@+id/tv_description" />
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1">
 
         <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:orientation="horizontal"
-            android:gravity="center">
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:orientation="vertical"
+            android:paddingHorizontal="26dp"
+            android:paddingBottom="50dp">
 
             <TextView
-                android:id="@+id/tv_desc"
+                android:id="@+id/tv_main"
                 android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:fontFamily="@font/poppins_semibold"
+                android:text="Create account"
+                android:textSize="18sp" />
+
+            <TextView
+                android:id="@+id/tv_description"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="14dp"
+                android:text="Lets started your journey" />
+
+            <TextView
+                android:id="@+id/tv_firstName"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:fontFamily="@font/poppins"
-                android:gravity="end"
-                android:text="Already have an account?"
+                android:text="First Name"
+                android:textColor="@color/black"
                 android:textSize="12sp" />
+
+            <EditText
+                android:id="@+id/et_firstName"
+                android:layout_width="match_parent"
+                android:layout_height="52dp"
+                android:background="@drawable/bg_et_register_login"
+                android:fontFamily="@font/poppins"
+                android:gravity="center_vertical"
+                android:hint="Enter your first name"
+                android:maxLines="1"
+                android:paddingHorizontal="15dp"
+                android:paddingVertical="10dp"
+                android:textColor="@color/black"
+                android:textColorHint="@color/grey"
+                android:textSize="10sp" />
+
 
             <TextView
-                android:id="@+id/tv_back"
+                android:id="@+id/tv_lastName"
+                android:layout_width="match_parent"
+                android:layout_height="20dp"
+                android:layout_marginTop="12dp"
+                android:fontFamily="@font/poppins"
+                android:text="Last Name"
+                android:textColor="@color/black"
+                android:textSize="12sp" />
+
+            <EditText
+                android:id="@+id/et_lastName"
+                android:layout_width="match_parent"
+                android:layout_height="52dp"
+                android:background="@drawable/bg_et_register_login"
+                android:fontFamily="@font/poppins"
+                android:gravity="center_vertical"
+                android:hint="Enter your last name"
+                android:maxLines="1"
+                android:paddingHorizontal="15dp"
+                android:paddingVertical="10dp"
+                android:textColor="@color/black"
+                android:textColorHint="@color/grey"
+                android:textSize="10sp" />
+
+            <TextView
+                android:id="@+id/tv_phone"
+                android:layout_width="match_parent"
+                android:layout_height="20dp"
+                android:layout_marginTop="12dp"
+                android:fontFamily="@font/poppins"
+                android:text="Phone"
+                android:textColor="@color/black"
+                android:textSize="12sp" />
+
+            <EditText
+                android:id="@+id/et_phone"
+                android:layout_width="match_parent"
+                android:layout_height="52dp"
+                android:background="@drawable/bg_et_register_login"
+                android:fontFamily="@font/poppins"
+                android:gravity="center_vertical"
+                android:hint="Enter your phone number"
+                android:inputType="phone"
+                android:maxLines="1"
+                android:paddingHorizontal="15dp"
+                android:paddingVertical="10dp"
+                android:textColor="@color/black"
+                android:textColorHint="@color/grey"
+                android:textSize="10sp" />
+
+            <TextView
+                android:id="@+id/tv_age"
+                android:layout_width="match_parent"
+                android:layout_height="20dp"
+                android:layout_marginTop="12dp"
+                android:fontFamily="@font/poppins"
+                android:text="Age"
+                android:textColor="@color/black"
+                android:textSize="12sp" />
+
+            <EditText
+                android:id="@+id/et_age"
+                android:layout_width="match_parent"
+                android:layout_height="52dp"
+                android:background="@drawable/bg_et_register_login"
+                android:fontFamily="@font/poppins"
+                android:gravity="center_vertical"
+                android:hint="Enter your age"
+                android:inputType="numberDecimal"
+                android:maxLines="1"
+                android:paddingHorizontal="15dp"
+                android:paddingVertical="10dp"
+                android:textColor="@color/black"
+                android:textColorHint="@color/grey"
+                android:textSize="10sp" />
+
+            <TextView
+                android:id="@+id/tv_username"
+                android:layout_width="match_parent"
+                android:layout_height="20dp"
+                android:layout_marginTop="12dp"
+                android:fontFamily="@font/poppins"
+                android:text="Username"
+                android:textColor="@color/black"
+                android:textSize="12sp" />
+
+            <EditText
+                android:id="@+id/et_username"
+                android:layout_width="match_parent"
+                android:layout_height="52dp"
+                android:background="@drawable/bg_et_register_login"
+                android:fontFamily="@font/poppins"
+                android:gravity="center_vertical"
+                android:hint="Enter your username"
+                android:maxLines="1"
+                android:paddingHorizontal="15dp"
+                android:paddingVertical="10dp"
+                android:textColor="@color/black"
+                android:textColorHint="@color/grey"
+                android:textSize="10sp" />
+
+            <TextView
+                android:id="@+id/tv_email"
+                android:layout_width="match_parent"
+                android:layout_height="20dp"
+                android:layout_marginTop="12dp"
+                android:fontFamily="@font/poppins"
+                android:text="Email"
+                android:textColor="@color/black"
+                android:textSize="12sp" />
+
+            <EditText
+                android:id="@+id/et_email"
+                android:layout_width="match_parent"
+                android:layout_height="52dp"
+                android:background="@drawable/bg_et_register_login"
+                android:fontFamily="@font/poppins"
+                android:gravity="center_vertical"
+                android:hint="Enter your email"
+                android:inputType="textEmailAddress"
+                android:maxLines="1"
+                android:paddingHorizontal="15dp"
+                android:paddingVertical="10dp"
+                android:textColor="@color/black"
+                android:textColorHint="@color/grey"
+                android:textSize="10sp" />
+
+            <TextView
+                android:id="@+id/tv_password"
+                android:layout_width="match_parent"
+                android:layout_height="20dp"
+                android:layout_marginTop="12dp"
+                android:fontFamily="@font/poppins"
+                android:text="Password"
+                android:textColor="@color/black"
+                android:textSize="12sp" />
+
+            <EditText
+                android:id="@+id/et_password"
+                android:layout_width="match_parent"
+                android:layout_height="52dp"
+                android:background="@drawable/bg_et_register_login"
+                android:fontFamily="@font/poppins"
+                android:gravity="center_vertical"
+                android:hint="Enter your password"
+                android:maxLines="1"
+                android:paddingHorizontal="15dp"
+                android:paddingVertical="10dp"
+                android:textColor="@color/black"
+                android:textColorHint="@color/grey"
+                android:textSize="10sp" />
+
+            <CheckBox
+                android:id="@+id/cb_accept"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:fontFamily="@font/poppins_semibold"
-                android:text="Go back"
-                android:layout_marginStart="5dp"
-                android:textSize="12sp" />
+                android:text="I accept term and condition"
+                android:textSize="10sp" />
+
+            <Button
+                android:id="@+id/btn_register"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:paddingHorizontal="20dp"
+                android:paddingVertical="17dp"
+                android:text="Create Account"
+                android:textSize="16sp"
+                app:layout_constraintTop_toBottomOf="@+id/tv_description" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:gravity="center"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:id="@+id/tv_desc"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="@font/poppins"
+                    android:gravity="end"
+                    android:text="Already have an account?"
+                    android:textSize="12sp" />
+
+                <TextView
+                    android:id="@+id/tv_back"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="5dp"
+                    android:fontFamily="@font/poppins_semibold"
+                    android:text="Go back"
+                    android:textSize="12sp" />
+            </LinearLayout>
+
         </LinearLayout>
 
-    </LinearLayout>
+    </ScrollView>
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+
+</LinearLayout>

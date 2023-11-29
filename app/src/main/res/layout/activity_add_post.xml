@@ -25,6 +25,7 @@
         android:id="@+id/btn_post"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:fontFamily="@font/satoshi_regular"
         android:text="Post"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/ll_top_bar" />
@@ -44,6 +45,7 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="10dp"
         android:background="@drawable/bg_add_post"
+        android:fontFamily="@font/satoshi_regular"
         android:gravity="top"
         android:hint="Write Something here.."
         android:lineHeight="14dp"
