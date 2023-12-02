@@ -1,6 +1,7 @@
 package das.mobile.triptracker.model;
 
 public class User {
+    private String id;
     private String username;
     private String email;
     private String firstName;
@@ -8,13 +9,22 @@ public class User {
     private String age;
     private String phone;
 
-    public User(String username, String email, String firstName, String lastName, String age, String phone) {
+    public User(String id, String username, String email, String firstName, String lastName, String age, String phone) {
+        this.id = id;
         this.username = username;
         this.email = email;
         this.firstName = firstName;
         this.lastName = lastName;
         this.age = age;
         this.phone = phone;
+    }
+
+    public String getId() {
+        return id;
+    }
+
+    public void setId(String id) {
+        this.id = id;
     }
 
     public String getUsername() {

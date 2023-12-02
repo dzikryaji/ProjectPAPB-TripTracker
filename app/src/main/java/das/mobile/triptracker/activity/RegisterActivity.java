@@ -48,46 +48,50 @@ public class RegisterActivity extends AppCompatActivity {
                 String username = binding.etUsername.getText().toString().trim();
                 String email = binding.etEmail.getText().toString().trim();
                 String password = binding.etPassword.getText().toString().trim();
-                User user = new User(username, email, firstName, lastName, age, phone);
 
                 if (firstName.isEmpty() || lastName.isEmpty() || phone.isEmpty() || age.isEmpty() || email.isEmpty() || password.isEmpty()) {
                     Toast.makeText(getApplicationContext(), "Seluruh data harus terisi", Toast.LENGTH_SHORT).show();
                 } else if (binding.cbAccept.isChecked()) {
                     firebaseDB = FirebaseDatabase.getInstance().getReference("users");
-                    firebaseDB.addListenerForSingleValueEvent(new ValueEventListener() {
-                        @Override
-                        public void onDataChange(@NonNull DataSnapshot snapshot) {
-                            if (snapshot.child(username).exists()) {
-                                Toast.makeText(RegisterActivity.this, "Username sudah diambil", Toast.LENGTH_SHORT).show();
-                            } else {
-                                firebaseDB.child(username).setValue(user);
-                                firebaseAuth.createUserWithEmailAndPassword(email, password)
-                                        .addOnCompleteListener(RegisterActivity.this, new OnCompleteListener<AuthResult>() {
+                    firebaseAuth.createUserWithEmailAndPassword(email, password)
+                            .addOnCompleteListener(RegisterActivity.this, new OnCompleteListener<AuthResult>() {
+                                @Override
+                                public void onComplete(@NonNull Task<AuthResult> task) {
+                                    if (task.isSuccessful()) {
+                                        FirebaseUser currentUser = firebaseAuth.getCurrentUser();
+                                        String id = currentUser.getUid();
+                                        User user = new User(id, username, email, firstName, lastName, age, phone);
+                                        firebaseDB.addListenerForSingleValueEvent(new ValueEventListener() {
+
                                             @Override
-                                            public void onComplete(@NonNull Task<AuthResult> task) {
-                                                if (task.isSuccessful()) {
+                                            public void onDataChange(@NonNull DataSnapshot snapshot) {
+                                                if (snapshot.child(username).exists()) {
+                                                    Toast.makeText(RegisterActivity.this, "Username sudah diambil", Toast.LENGTH_SHORT).show();
+                                                } else {
+                                                    firebaseDB.child(username).setValue(user);
                                                     Toast.makeText(getApplicationContext(), "Register berhasil", Toast.LENGTH_SHORT).show();
                                                     Intent intent = new Intent(getApplicationContext(), OnBoarding4Activity.class);
                                                     startActivity(intent);
                                                     finish();
-                                                } else {
-                                                    // If sign in fails, display a message to the user.
-                                                    Log.e("AUTH", "createUserWithEmail:failure", task.getException());
-                                                    Toast.makeText(RegisterActivity.this, "Authentication failed.",
-                                                            Toast.LENGTH_SHORT).show();
                                                 }
                                             }
-                                        });
-                            }
-                        }
 
-                        @Override
-                        public void onCancelled(@NonNull DatabaseError error) {
-                            Log.e("DATABASE", "createUserWithEmail:failure " + error.getMessage());
-                            Toast.makeText(RegisterActivity.this, "Authentication failed.",
-                                    Toast.LENGTH_SHORT).show();
-                        }
-                    });
+                                            @Override
+                                            public void onCancelled(@NonNull DatabaseError error) {
+                                                Log.e("DATABASE", "createUserWithEmail:failure " + error.getMessage());
+                                                Toast.makeText(RegisterActivity.this, "Authentication failed.",
+                                                        Toast.LENGTH_SHORT).show();
+                                            }
+                                        });
+                                    } else {
+                                        // If sign in fails, display a message to the user.
+                                        Log.e("AUTH", "createUserWithEmail:failure", task.getException());
+                                        Toast.makeText(RegisterActivity.this, "Authentication failed.",
+                                                Toast.LENGTH_SHORT).show();
+                                    }
+                                }
+                            });
+
                 } else {
                     Toast.makeText(getApplicationContext(), "Ceklis syarat dan ketentuan", Toast.LENGTH_SHORT).show();
                 }
@@ -118,10 +122,11 @@ public class RegisterActivity extends AppCompatActivity {
     public void onStart() {
         super.onStart();
         FirebaseUser currentUser = firebaseAuth.getCurrentUser();
-        if(currentUser != null){
+        if (currentUser != null) {
             Intent intent = new Intent(this, MainActivity.class);
             startActivity(intent);
             finish();
         }
     }
+
 }
