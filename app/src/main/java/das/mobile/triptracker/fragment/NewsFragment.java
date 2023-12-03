@@ -1,6 +1,7 @@
 package das.mobile.triptracker.fragment;
 
 import android.os.Bundle;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -8,8 +9,15 @@ import android.view.ViewGroup;
 import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.LinearLayoutManager;
 
-import das.mobile.triptracker.adapter.NewsAdapter;
+import java.util.List;
+
+import das.mobile.triptracker.api.ApiConfig;
 import das.mobile.triptracker.databinding.FragmentNewsBinding;
+import das.mobile.triptracker.model.News;
+import das.mobile.triptracker.model.NewsResponse;
+import retrofit2.Call;
+import retrofit2.Callback;
+import retrofit2.Response;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -26,6 +34,9 @@ public class NewsFragment extends Fragment {
     // TODO: Rename and change types of parameters
     private String mParam1;
     private String mParam2;
+    FragmentNewsBinding binding;
+
+    List<News> newsList;
 
     public NewsFragment() {
         // Required empty public constructor
@@ -63,7 +74,30 @@ public class NewsFragment extends Fragment {
                              Bundle savedInstanceState) {
         FragmentNewsBinding binding = FragmentNewsBinding.inflate(inflater, container, false);
         binding.rvNews.setLayoutManager(new LinearLayoutManager(getActivity()));
-        binding.rvNews.setAdapter(new NewsAdapter(15));
+        getAllNews();
         return binding.getRoot();
+    }
+
+    private void getAllNews() {
+        Call<NewsResponse> req = ApiConfig.getApiService().getNews();
+        req.enqueue(new Callback<NewsResponse>() {
+            @Override
+            public void onResponse(Call<NewsResponse> call, Response<NewsResponse> response) {
+                if (response.isSuccessful()) {
+                    if (response.body() != null) {
+                        Log.e("NEWS API", response.body().toString());
+                        newsList = response.body().getArticles();
+//                        System.out.println("BERHASIL");
+//                        binding.rvNews.setAdapter(new NewsAdapter(newsList));
+                    }
+                }
+            }
+
+            @Override
+            public void onFailure(Call<NewsResponse> call, Throwable t) {
+                System.out.println("GAGAL");
+                System.out.println(call);
+            }
+        });
     }
 }
