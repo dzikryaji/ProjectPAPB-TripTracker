@@ -9,6 +9,10 @@ public class Post {
     private String date;
     private List<String> imageUrl;
 
+    public Post(){
+
+    }
+
     public Post(String id, String userId, String text, String date, List<String> imageUrl) {
         this.id = id;
         this.userId = userId;
@@ -25,9 +29,7 @@ public class Post {
         this.id = id;
     }
 
-    public String getUserId() {
-        return userId;
-    }
+    public String getUserId() { return userId; }
 
     public void setUserId(String userId) {
         this.userId = userId;

@@ -5,11 +5,21 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
+import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.LinearLayoutManager;
 
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
+
+import java.util.ArrayList;
+
 import das.mobile.triptracker.adapter.PostAdapter;
 import das.mobile.triptracker.databinding.FragmentSearchBinding;
+import das.mobile.triptracker.model.Post;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -26,6 +36,9 @@ public class SearchFragment extends Fragment {
     // TODO: Rename and change types of parameters
     private String mParam1;
     private String mParam2;
+    PostAdapter postAdapter;
+    DatabaseReference db = FirebaseDatabase.getInstance().getReference();
+    ArrayList<Post> listPost;
 
     public SearchFragment() {
         // Required empty public constructor
@@ -64,7 +77,24 @@ public class SearchFragment extends Fragment {
         // Inflate the layout for this fragment
         FragmentSearchBinding binding = FragmentSearchBinding.inflate(inflater, container, false);
         binding.rvSearch.setLayoutManager(new LinearLayoutManager(getActivity()));
-        binding.rvSearch.setAdapter(new PostAdapter(12));
+        db.child("posts").addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot snapshot) {
+                listPost = new ArrayList<>();
+                for (DataSnapshot item : snapshot.getChildren()) {
+                    Post post = item.getValue(Post.class);
+                    post.setId(item.getKey());
+                    listPost.add(post);
+                }
+                postAdapter = new PostAdapter(listPost, getActivity(), false, false);
+                binding.rvSearch.setAdapter(postAdapter);
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError error) {
+
+            }
+        });
         return binding.getRoot();
     }
 }

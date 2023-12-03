@@ -107,6 +107,7 @@
             app:cardCornerRadius="12dp">
 
             <ImageView
+                android:id="@+id/iv_img1"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:src="@drawable/bg_onboarding1"
@@ -121,6 +122,7 @@
             app:cardCornerRadius="12dp">
 
             <ImageView
+                android:id="@+id/iv_img2"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:src="@drawable/bg_onboarding2"
