@@ -7,18 +7,26 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Toast;
 
+import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
 
 import com.google.android.material.tabs.TabLayoutMediator;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
 
 import das.mobile.triptracker.activity.LoginActivity;
 import das.mobile.triptracker.adapter.ProfilePagerAdapter;
 import das.mobile.triptracker.databinding.FragmentProfileBinding;
+import das.mobile.triptracker.model.User;
 
 public class ProfileFragment extends Fragment {
     FirebaseUser currentUser;
+    DatabaseReference db = FirebaseDatabase.getInstance().getReference();
     public ProfileFragment(FirebaseUser currentUser) {
         this.currentUser = currentUser;
     }
@@ -55,6 +63,28 @@ public class ProfileFragment extends Fragment {
                 startActivity(intent);
                 Toast.makeText(getActivity().getApplicationContext(), "Logout Success", Toast.LENGTH_SHORT).show();
                 getActivity().finish();
+            }
+        });
+
+        db.child("users").orderByChild("id").equalTo(currentUser.getUid()).addListenerForSingleValueEvent(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot snapshot) {
+                if (snapshot.exists()) {
+                    for (DataSnapshot userSnapshot : snapshot.getChildren()) {
+                        User user = userSnapshot.getValue(User.class);
+                        if (user != null) {
+                            String name = user.getFirstName() + " " + user.getLastName();
+                            String username = "@" + user.getUsername();
+                            binding.tvName.setText(name);
+                            binding.tvUsername.setText(username);
+                        }
+                    }
+                }
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError error) {
+
             }
         });
 

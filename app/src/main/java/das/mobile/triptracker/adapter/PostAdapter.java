@@ -10,13 +10,17 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.bumptech.glide.Glide;
 import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
 
 import java.util.List;
 
 import das.mobile.triptracker.databinding.ItemPostBinding;
 import das.mobile.triptracker.model.Post;
+import das.mobile.triptracker.model.User;
 
 public class PostAdapter extends RecyclerView.Adapter<PostAdapter.PostViewHolder> {
 
@@ -25,11 +29,12 @@ public class PostAdapter extends RecyclerView.Adapter<PostAdapter.PostViewHolder
     private FirebaseUser currentUser;
     private DatabaseReference db = FirebaseDatabase.getInstance().getReference();
 
-    public PostAdapter(List<Post>lPost, Activity activity, FirebaseUser currentUser) {
+    public PostAdapter(List<Post> lPost, Activity activity, FirebaseUser currentUser) {
         this.lPost = lPost;
         this.activity = activity;
         this.currentUser = currentUser;
     }
+
     @NonNull
     @Override
     public PostAdapter.PostViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
@@ -48,21 +53,41 @@ public class PostAdapter extends RecyclerView.Adapter<PostAdapter.PostViewHolder
             Glide.with(holder.binding.ivImg1.getContext())
                     .load(imageUrl)
                     .into(holder.binding.ivImg1);
+            holder.binding.cvImg1.setVisibility(View.VISIBLE);
             if (data.getImageUrl().size() > 1) {
                 String imageUrl2 = data.getImageUrl().get(1); // Assuming the second image URL is in the second index of the list
                 Glide.with(holder.binding.ivImg1.getContext())
                         .load(imageUrl2)
                         .into(holder.binding.ivImg2);
-            } else {
-                // Hide tvImg2 if there's no additional image URL
-                holder.binding.ivImg2.setVisibility(View.GONE);
+                holder.binding.cvImg2.setVisibility(View.VISIBLE);
             }
-        } else {
-            // Hide the image view if there's no image URL
-            holder.binding.ivImg1.setVisibility(View.GONE);
         }
 
-        holder.binding.tvUsername.setText("@" + data.getUserId());
+        db.child("users").orderByChild("id").equalTo(data.getUserId()).addListenerForSingleValueEvent(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot snapshot) {
+                if (snapshot.exists()) {
+                    for (DataSnapshot userSnapshot : snapshot.getChildren()) {
+                        User user = userSnapshot.getValue(User.class);
+                        if (user != null) {
+                            String name = user.getFirstName() + " " + user.getLastName();
+                            String username = "@" + user.getUsername();
+                            holder.binding.tvName.setText(name);
+                            holder.binding.tvUsername.setText(username);
+                        }
+                    }
+                }
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError error) {
+
+            }
+        });
+
+        if (data.getUserId().equals(currentUser.getUid())){
+            holder.binding.btnPost.setText("Edit");
+        }
 
     }
 
@@ -71,7 +96,7 @@ public class PostAdapter extends RecyclerView.Adapter<PostAdapter.PostViewHolder
         return lPost.size();
     }
 
-    class PostViewHolder extends RecyclerView.ViewHolder{
+    class PostViewHolder extends RecyclerView.ViewHolder {
 
         ItemPostBinding binding;
 
