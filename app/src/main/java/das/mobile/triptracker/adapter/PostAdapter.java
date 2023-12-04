@@ -9,6 +9,7 @@ import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.bumptech.glide.Glide;
+import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 
@@ -21,16 +22,13 @@ public class PostAdapter extends RecyclerView.Adapter<PostAdapter.PostViewHolder
 
     private List<Post> lPost;
     private Activity activity;
-    DatabaseReference db = FirebaseDatabase.getInstance().getReference();
-    boolean isSaved = false;
-    boolean isUserPost = false;
+    private FirebaseUser currentUser;
+    private DatabaseReference db = FirebaseDatabase.getInstance().getReference();
 
-
-    public PostAdapter(List<Post>lPost, Activity activity, boolean isSaved, boolean isUserPost) {
+    public PostAdapter(List<Post>lPost, Activity activity, FirebaseUser currentUser) {
         this.lPost = lPost;
         this.activity = activity;
-        this.isSaved = isSaved;
-        this.isUserPost = isUserPost;
+        this.currentUser = currentUser;
     }
     @NonNull
     @Override
@@ -66,11 +64,6 @@ public class PostAdapter extends RecyclerView.Adapter<PostAdapter.PostViewHolder
 
         holder.binding.tvUsername.setText("@" + data.getUserId());
 
-        if (isSaved) {
-            holder.binding.btnPost.setText("Saved");
-        } else if (isUserPost) {
-            holder.binding.btnPost.setText("Edit");
-        }
     }
 
     @Override
