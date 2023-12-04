@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".activity.AddPostActivity">
+    tools:context=".fragment.UpdatePostActivity">
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
@@ -27,11 +27,21 @@
         </LinearLayout>
 
         <Button
-            android:id="@+id/btn_post"
+            android:id="@+id/btn_delete"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:fontFamily="@font/satoshi_regular"
-            android:text="Post"
+            android:text="Delete"
+            android:backgroundTint="@color/design_default_color_error"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/ll_top_bar" />
+
+        <Button
+            android:id="@+id/btn_update"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/satoshi_regular"
+            android:text="Update"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/ll_top_bar" />
 
@@ -42,7 +52,7 @@
             android:layout_marginTop="24dp"
             android:src="@drawable/img_default_pfp"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/btn_post" />
+            app:layout_constraintTop_toBottomOf="@+id/btn_update" />
 
         <EditText
             android:id="@+id/et_post"
@@ -71,7 +81,7 @@
             app:layout_constraintTop_toBottomOf="@id/et_post">
 
             <androidx.cardview.widget.CardView
-                android:id="@+id/cv_image_post1"
+                android:id="@+id/cv_img1"
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
                 android:layout_marginEnd="8dp"
@@ -81,7 +91,7 @@
                 tools:visibility="visible">
 
                 <ImageView
-                    android:id="@+id/iv_image_post1"
+                    android:id="@+id/iv_img1"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:scaleType="centerCrop"
@@ -90,7 +100,7 @@
             </androidx.cardview.widget.CardView>
 
             <androidx.cardview.widget.CardView
-                android:id="@+id/cv_image_post2"
+                android:id="@+id/cv_img2"
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
                 android:layout_weight="1"
@@ -99,7 +109,7 @@
                 tools:visibility="visible">
 
                 <ImageView
-                    android:id="@+id/iv_image_post2"
+                    android:id="@+id/iv_img2"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:scaleType="centerCrop"
@@ -151,6 +161,5 @@
             app:layout_constraintTop_toTopOf="parent" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
-
 
 </FrameLayout>

@@ -1,6 +1,7 @@
 package das.mobile.triptracker.adapter;
 
 import android.app.Activity;
+import android.content.Intent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -18,6 +19,7 @@ import com.google.firebase.database.ValueEventListener;
 
 import java.util.List;
 
+import das.mobile.triptracker.fragment.UpdatePostActivity;
 import das.mobile.triptracker.databinding.ItemPostBinding;
 import das.mobile.triptracker.model.Post;
 import das.mobile.triptracker.model.User;
@@ -87,6 +89,14 @@ public class PostAdapter extends RecyclerView.Adapter<PostAdapter.PostViewHolder
 
         if (data.getUserId().equals(currentUser.getUid())){
             holder.binding.btnPost.setText("Edit");
+            holder.binding.btnPost.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+                    Intent intent = new Intent(activity, UpdatePostActivity.class);
+                    intent.putExtra("postId", data.getId());
+                    activity.startActivity(intent);
+                }
+            });
         }
 
     }
