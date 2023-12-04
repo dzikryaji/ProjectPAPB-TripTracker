@@ -1,23 +1,26 @@
 package das.mobile.triptracker.fragment;
 
 import android.os.Bundle;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Toast;
 
 import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.LinearLayoutManager;
 
-import java.util.List;
+import java.util.ArrayList;
 
-import das.mobile.triptracker.api.ApiConfig;
+import das.mobile.triptracker.adapter.NewsAdapter;
+import das.mobile.triptracker.api.ApiService;
 import das.mobile.triptracker.databinding.FragmentNewsBinding;
 import das.mobile.triptracker.model.News;
 import das.mobile.triptracker.model.NewsResponse;
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
+import retrofit2.Retrofit;
+import retrofit2.converter.gson.GsonConverterFactory;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -34,9 +37,9 @@ public class NewsFragment extends Fragment {
     // TODO: Rename and change types of parameters
     private String mParam1;
     private String mParam2;
-    FragmentNewsBinding binding;
+    private ArrayList<News> newsList;
+    private NewsAdapter newsAdapter;
 
-    List<News> newsList;
 
     public NewsFragment() {
         // Required empty public constructor
@@ -74,29 +77,36 @@ public class NewsFragment extends Fragment {
                              Bundle savedInstanceState) {
         FragmentNewsBinding binding = FragmentNewsBinding.inflate(inflater, container, false);
         binding.rvNews.setLayoutManager(new LinearLayoutManager(getActivity()));
-        getAllNews();
+        newsList = new ArrayList<>();
+        newsAdapter = new NewsAdapter(newsList, getActivity());
+        binding.rvNews.setAdapter(newsAdapter);
+        getNews();
         return binding.getRoot();
     }
 
-    private void getAllNews() {
-        Call<NewsResponse> req = ApiConfig.getApiService().getNews();
-        req.enqueue(new Callback<NewsResponse>() {
+    private void getNews(){
+        Retrofit retrofit = new Retrofit.Builder()
+                .baseUrl("https://newsapi.org/v2/")
+                .addConverterFactory(GsonConverterFactory.create())
+                .build();
+        ApiService apiService = retrofit.create(ApiService.class);
+        Call<NewsResponse> call;
+        call = apiService.getAllNews("https://newsapi.org/v2/top-headlines?country=id&category=entertainment&apiKey=47b5472777b2431db732548c3373b501");
+        call.enqueue(new Callback<NewsResponse>() {
             @Override
             public void onResponse(Call<NewsResponse> call, Response<NewsResponse> response) {
-                if (response.isSuccessful()) {
-                    if (response.body() != null) {
-                        Log.e("NEWS API", response.body().toString());
-                        newsList = response.body().getArticles();
-//                        System.out.println("BERHASIL");
-//                        binding.rvNews.setAdapter(new NewsAdapter(newsList));
-                    }
+                NewsResponse newsResponse = response.body();
+                ArrayList<News> news = newsResponse.getArticles();
+                for (int i=0; i<news.size(); i++){
+                    newsList.add(new News(news.get(i).getTitle(), news.get(i).getDescription(), news.get(i).getPublishedAt(), news.get(i).getUrl(), news.get(i).getUrlToImage()));
                 }
+                newsAdapter.notifyDataSetChanged();
+
             }
 
             @Override
             public void onFailure(Call<NewsResponse> call, Throwable t) {
-                System.out.println("GAGAL");
-                System.out.println(call);
+                Toast.makeText(getActivity(), "Fail to get news", Toast.LENGTH_SHORT).show();
             }
         });
     }

@@ -50,6 +50,15 @@ public class PostAdapter extends RecyclerView.Adapter<PostAdapter.PostViewHolder
             Glide.with(holder.binding.ivImg1.getContext())
                     .load(imageUrl)
                     .into(holder.binding.ivImg1);
+            if (data.getImageUrl().size() > 1) {
+                String imageUrl2 = data.getImageUrl().get(1); // Assuming the second image URL is in the second index of the list
+                Glide.with(holder.binding.ivImg1.getContext())
+                        .load(imageUrl2)
+                        .into(holder.binding.ivImg2);
+            } else {
+                // Hide tvImg2 if there's no additional image URL
+                holder.binding.ivImg2.setVisibility(View.GONE);
+            }
         } else {
             // Hide the image view if there's no image URL
             holder.binding.ivImg1.setVisibility(View.GONE);

@@ -1,24 +1,39 @@
 package das.mobile.triptracker.model;
 
-import com.google.gson.annotations.SerializedName;
-
-import java.util.List;
+import java.util.ArrayList;
 
 public class NewsResponse {
-    @SerializedName("status")
-    private String status;
+ private int totalResult;
+ private String status;
+ private ArrayList<News> articles;
 
-    @SerializedName("totalResults")
-    private String totalResults;
+ public NewsResponse(int totalResult, String status, ArrayList<News> articles) {
+  this.totalResult = totalResult;
+  this.status = status;
+  this.articles = articles;
+ }
 
-    @SerializedName("articles")
-    private List<News> articles;
+ public int getTotalResult() {
+  return totalResult;
+ }
 
-    public List<News> getArticles() {
-        return articles;
-    }
+ public void setTotalResult(int totalResult) {
+  this.totalResult = totalResult;
+ }
 
-    public String getStatus() {
-        return status;
-    }
+ public String getStatus() {
+  return status;
+ }
+
+ public void setStatus(String status) {
+  this.status = status;
+ }
+
+ public ArrayList<News> getArticles() {
+  return articles;
+ }
+
+ public void setArticles(ArrayList<News> articles) {
+  this.articles = articles;
+ }
 }
