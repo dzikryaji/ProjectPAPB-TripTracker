@@ -3,6 +3,8 @@ package das.mobile.triptracker.activity;
 import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
+import android.os.Handler;
+import android.os.Looper;
 import android.util.Log;
 import android.view.View;
 import android.widget.Toast;
@@ -95,18 +97,19 @@ public class AddPostActivity extends AppCompatActivity {
 
 
     private void savePost() {
+        binding.progressLayout.setVisibility(View.VISIBLE);
         String postText = binding.etPost.getText().toString().trim();
         String postId = UUID.randomUUID().toString();
         String userId = currentUser.getUid();
         String postDate = getCurrentDate();
 
-        if (imageUri != null) {
+        if (!imageUri.isEmpty()) {
             List<String> imageURL = new ArrayList<>();
 
             for (int i = 0; i < imageUri.size(); i++) {
                 StorageReference imageRef = firebaseStorage.child(postId + "_image" + i + ".jpg");
                 int finalI = i;
-                imageRef.putFile(imageUri.get(0))
+                imageRef.putFile(imageUri.get(i))
                         .addOnSuccessListener(new OnSuccessListener<UploadTask.TaskSnapshot>() {
                             @Override
                             public void onSuccess(UploadTask.TaskSnapshot taskSnapshot) {
@@ -114,11 +117,28 @@ public class AddPostActivity extends AppCompatActivity {
                                     @Override
                                     public void onSuccess(Uri uri) {
                                         imageURL.add(uri.toString());
-                                        if (finalI == imageUri.size() - 1 ){
-                                            Post post = new Post(postId, userId, postText, postDate, imageURL);
-                                            postDB.child(post.getId()).setValue(post);
-                                            Toast.makeText(getApplicationContext(), "Post Upload Success", Toast.LENGTH_SHORT).show();
-                                            finish();
+                                        if (finalI == imageUri.size() - 1) {
+                                            Handler h = new Handler(Looper.getMainLooper());
+                                            h.postDelayed(new Runnable() {
+                                                @Override
+                                                public void run() {
+                                                    Post post = new Post(postId, userId, postText, postDate, imageURL);
+                                                    postDB.child(post.getId()).setValue(post).addOnSuccessListener(new OnSuccessListener<Void>() {
+                                                        @Override
+                                                        public void onSuccess(Void unused) {
+                                                            Toast.makeText(getApplicationContext(), "Post Upload Succeed", Toast.LENGTH_SHORT).show();
+                                                            binding.progressLayout.setVisibility(View.GONE);
+                                                            finish();
+                                                        }
+                                                    }).addOnFailureListener(new OnFailureListener() {
+                                                        @Override
+                                                        public void onFailure(@NonNull Exception e) {
+                                                            Toast.makeText(getApplicationContext(), "Post upload failed.", Toast.LENGTH_SHORT).show();
+                                                            binding.progressLayout.setVisibility(View.GONE);
+                                                        }
+                                                    });
+                                                }
+                                            }, 500L);
                                         }
                                     }
                                 });
@@ -128,14 +148,27 @@ public class AddPostActivity extends AppCompatActivity {
                             @Override
                             public void onFailure(@NonNull Exception e) {
                                 Toast.makeText(AddPostActivity.this, "Upload post failed", Toast.LENGTH_SHORT).show();
+                                binding.progressLayout.setVisibility(View.GONE);
                             }
                         });
             }
-            Log.i("IMAGEURL", imageURL.toString());
 
         } else {
             Post post = new Post(postId, userId, postText, postDate, null);
-            postDB.child(post.getId()).setValue(post);
+            postDB.child(post.getId()).setValue(post).addOnSuccessListener(new OnSuccessListener<Void>() {
+                @Override
+                public void onSuccess(Void unused) {
+                    Toast.makeText(getApplicationContext(), "Post Upload Succeed", Toast.LENGTH_SHORT).show();
+                    binding.progressLayout.setVisibility(View.GONE);
+                    finish();
+                }
+            }).addOnFailureListener(new OnFailureListener() {
+                @Override
+                public void onFailure(@NonNull Exception e) {
+                    Toast.makeText(getApplicationContext(), "Post upload failed.", Toast.LENGTH_SHORT).show();
+                    binding.progressLayout.setVisibility(View.GONE);
+                }
+            });
         }
     }
 
