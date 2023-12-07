@@ -21,19 +21,24 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="19dp"
-        tools:text="user"
+        android:fontFamily="@font/satoshi_bold"
         android:textColor="@color/black"
         android:textSize="16sp"
         android:textStyle="bold"
         app:layout_constraintStart_toEndOf="@+id/iv_profile_picture"
-        app:layout_constraintTop_toTopOf="@+id/iv_profile_picture" />
+        app:layout_constraintTop_toTopOf="@+id/iv_profile_picture"
+        tools:text="user" />
 
-    <Button
+    <Button style="@null"
         android:id="@+id/btn_post"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Save"
         android:textSize="12sp"
+        android:background="@drawable/btn_transparent"
+        android:backgroundTint="@null"
+        android:textColor="#164641"
+        android:fontFamily="@font/satoshi_medium"
         app:layout_constraintBottom_toBottomOf="@+id/iv_profile_picture"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="@+id/iv_profile_picture" />
@@ -41,47 +46,48 @@
 
     <TextView
         android:id="@+id/tv_username"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:ellipsize="end"
-        android:maxWidth="80dp"
-        android:maxLines="1"
-        tools:text="\@usersdfkasdkfjahsklf"
-        android:textSize="16sp"
-        app:layout_constraintEnd_toStartOf="@id/tv_separator"
-        app:layout_constraintStart_toStartOf="@id/tv_name"
-        app:layout_constraintTop_toBottomOf="@id/tv_name" />
-
-    <TextView
-        android:id="@+id/tv_separator"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginHorizontal="4dp"
-        android:text="·"
-        android:textSize="16sp"
-        app:layout_constraintBottom_toBottomOf="@id/tv_username"
-        app:layout_constraintEnd_toStartOf="@id/tv_date"
-        app:layout_constraintTop_toTopOf="@id/tv_username" />
+        android:ellipsize="end"
+        android:fontFamily="@font/poppins"
+        android:maxWidth="80dp"
+        android:maxLines="1"
+        android:textSize="14sp"
+        app:layout_constraintStart_toStartOf="@id/tv_name"
+        app:layout_constraintTop_toBottomOf="@id/tv_name"
+        tools:text="\@user" />
 
     <TextView
         android:id="@+id/tv_date"
-        android:layout_width="0dp"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginEnd="4dp"
         android:layout_weight="1"
+        android:fontFamily="@font/poppins"
         android:maxLines="1"
-        android:textSize="16sp"
-        app:layout_constraintBottom_toBottomOf="@id/tv_username"
-        app:layout_constraintEnd_toStartOf="@id/btn_post"
-        app:layout_constraintTop_toTopOf="@id/tv_username"
+        android:textSize="14sp"
+        app:layout_constraintStart_toEndOf="@+id/tv_divider"
+        app:layout_constraintTop_toBottomOf="@+id/tv_name"
         tools:text="99/99/99" />
+
+    <TextView
+        android:id="@+id/tv_divider"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:fontFamily="@font/poppins"
+        android:text=" · "
+        android:textColor="@color/black"
+        android:textSize="14sp"
+        android:textStyle="bold"
+        app:layout_constraintStart_toEndOf="@+id/tv_username"
+        app:layout_constraintTop_toBottomOf="@+id/tv_name" />
 
     <TextView
         android:id="@+id/tv_post"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginTop="14dp"
-        android:textSize="16sp"
+        android:fontFamily="@font/poppins"
+        android:textSize="14sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="@id/tv_username"
         app:layout_constraintTop_toBottomOf="@id/tv_username"

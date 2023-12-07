@@ -2,14 +2,14 @@ package das.mobile.triptracker.model;
 
 public class News {
     String title;
-    String description;
+    String author;
     String publishedAt;
     String url;
     String urlToImage;
 
-    public News(String title, String description, String publishedAt, String url, String urlToImage) {
+    public News(String title, String author, String publishedAt, String url, String urlToImage) {
         this.title = title;
-        this.description = description;
+        this.author = author;
         this.publishedAt = publishedAt;
         this.url = url;
         this.urlToImage = urlToImage;
@@ -31,12 +31,12 @@ public class News {
         this.title = title;
     }
 
-    public String getDescription() {
-        return description;
+    public String getAuthor() {
+        return author;
     }
 
-    public void setDescription(String description) {
-        this.description = description;
+    public void setAuthor(String author) {
+        this.author = author;
     }
 
     public String getPublishedAt() {

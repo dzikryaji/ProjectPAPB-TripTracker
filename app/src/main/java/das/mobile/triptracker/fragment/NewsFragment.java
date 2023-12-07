@@ -98,7 +98,7 @@ public class NewsFragment extends Fragment {
                 NewsResponse newsResponse = response.body();
                 ArrayList<News> news = newsResponse.getArticles();
                 for (int i=0; i<news.size(); i++){
-                    newsList.add(new News(news.get(i).getTitle(), news.get(i).getDescription(), news.get(i).getPublishedAt(), news.get(i).getUrl(), news.get(i).getUrlToImage()));
+                    newsList.add(new News(news.get(i).getTitle(), news.get(i).getAuthor(), news.get(i).getPublishedAt(), news.get(i).getUrl(), news.get(i).getUrlToImage()));
                 }
                 newsAdapter.notifyDataSetChanged();
 

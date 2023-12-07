@@ -45,8 +45,9 @@
                     android:id="@+id/tv_main"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    android:fontFamily="@font/satoshi_bold"
                     android:text="Lets explore the world"
-                    android:textSize="40sp"
+                    android:textSize="35sp"
                     android:textStyle="bold"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
@@ -56,8 +57,9 @@
                     android:id="@+id/tv_description"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    android:fontFamily="@font/poppins"
                     android:text="Find thousans of tourist destinations ready for you to visit"
-                    android:textSize="20sp"
+                    android:textSize="18sp"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toBottomOf="@+id/tv_main" />
@@ -67,11 +69,13 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="68dp"
+                    android:fontFamily="@font/poppins"
                     android:paddingHorizontal="20dp"
                     android:paddingVertical="17dp"
                     android:text="Next"
                     android:textSize="16sp"
-                    app:layout_constraintTop_toBottomOf="@+id/tv_description" />
+                    app:layout_constraintTop_toBottomOf="@+id/tv_description"
+                    tools:layout_editor_absoluteX="20dp" />
 
             </androidx.constraintlayout.widget.ConstraintLayout>
 

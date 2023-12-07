@@ -7,8 +7,6 @@ import android.view.ViewGroup;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
-import com.squareup.picasso.Picasso;
-
 import java.util.ArrayList;
 
 import das.mobile.triptracker.databinding.ItemNewsBinding;
@@ -34,9 +32,8 @@ public class NewsAdapter extends RecyclerView.Adapter<NewsAdapter.NewsViewHolder
     public void onBindViewHolder(@NonNull NewsAdapter.NewsViewHolder holder, int position) {
         News news = newsList.get(position);
         holder.binding.tvTitle.setText(news.getTitle());
-        holder.binding.tvNews.setText(news.getDescription());
+        holder.binding.tvAuthor.setText(news.getAuthor());
         holder.binding.tvDate.setText(news.getPublishedAt());
-        Picasso.get().load(news.getUrlToImage()).into(holder.binding.ivImage);
     }
 
     @Override
