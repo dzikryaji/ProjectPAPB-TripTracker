@@ -5,22 +5,23 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@drawable/bg_splashscreen"
-    android:orientation="vertical"
     android:gravity="center"
-    tools:context=".fragment.OnBoarding4Fragment">
+    android:orientation="vertical"
+    android:paddingHorizontal="44dp"
+    tools:context=".activity.OnBoarding4Activity">
 
     <ImageView
         android:id="@+id/iv_logo"
         android:layout_width="110dp"
         android:layout_height="110dp"
-        android:src="@drawable/ic_logo"
-        android:layout_marginBottom="20dp"/>
+        android:layout_marginBottom="20dp"
+        android:src="@drawable/ic_logo" />
 
     <TextView
         android:id="@+id/tv_main"
-        android:layout_width="295dp"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:fontFamily="@font/poppins_bold"
+        android:fontFamily="@font/satoshi_black"
         android:gravity="center_horizontal|top"
         android:text="Successfully"
         android:textColor="#FFFFFF"
@@ -28,17 +29,17 @@
 
     <TextView
         android:id="@+id/tv_main2"
-        android:layout_width="295dp"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:fontFamily="@font/poppins_bold"
+        android:fontFamily="@font/satoshi_black"
         android:gravity="center_horizontal|top"
         android:text="created an account"
         android:textColor="#FFFFFF"
-        android:textSize="25sp" />
+        android:textSize="30sp" />
 
     <TextView
         android:id="@+id/tv_description"
-        android:layout_width="295dp"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:fontFamily="@font/poppins"
         android:gravity="center_horizontal|top"
@@ -47,12 +48,11 @@
 
     <Button
         android:id="@+id/btn_login"
-        android:layout_width="295dp"
-        android:layout_height="55dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
         android:layout_marginTop="150dp"
         android:backgroundTint="#FFFFFF"
-        android:paddingHorizontal="15dp"
-        android:paddingVertical="12dp"
+        android:fontFamily="@font/poppins_bold"
         android:text="Let’s Explore"
         android:textColor="#164641"
         android:textSize="14sp" />

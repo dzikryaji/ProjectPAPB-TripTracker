@@ -21,10 +21,10 @@
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:fontFamily="@font/satoshi_black"
                 android:text="Search"
                 android:textColor="@color/dark_green"
-                android:textSize="20sp"
-                android:textStyle="bold" />
+                android:textSize="20sp" />
 
         </LinearLayout>
 
@@ -38,6 +38,7 @@
             android:drawableEnd="@drawable/ic_voice_input"
             android:drawablePadding="14dp"
             android:drawableTint="@color/dark_green"
+            android:fontFamily="@font/satoshi_medium"
             android:hint="Search"
             android:imeOptions="actionSearch"
             android:inputType="text"

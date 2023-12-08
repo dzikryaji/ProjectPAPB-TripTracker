@@ -1,6 +1,9 @@
 package das.mobile.triptracker.adapter;
 
 import android.content.Context;
+import android.content.Intent;
+import android.net.Uri;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.ViewGroup;
 
@@ -34,6 +37,15 @@ public class NewsAdapter extends RecyclerView.Adapter<NewsAdapter.NewsViewHolder
         holder.binding.tvTitle.setText(news.getTitle());
         holder.binding.tvAuthor.setText(news.getAuthor());
         holder.binding.tvDate.setText(news.getPublishedAt());
+        holder.binding.newsLayout.setOnClickListener(view -> {
+            Intent browserIntent = new Intent(Intent.ACTION_VIEW, Uri.parse(news.getUrl()));
+            context.startActivity(browserIntent);
+            if (browserIntent.resolveActivity(context.getPackageManager()) != null){
+                context.startActivity(browserIntent);
+            } else {
+                Log.i("BROWSER INTENT", news.getUrl());
+            }
+        });
     }
 
     @Override

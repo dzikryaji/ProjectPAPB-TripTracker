@@ -29,16 +29,14 @@
         app:layout_constraintTop_toTopOf="@+id/iv_profile_picture"
         tools:text="user" />
 
-    <Button style="@null"
+    <Button
         android:id="@+id/btn_post"
+        style="@style/Widget.Base.Button.Pill"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:background="@drawable/bg_btn_outline_pill"
         android:text="Save"
-        android:textSize="12sp"
-        android:background="@drawable/btn_transparent"
-        android:backgroundTint="@null"
-        android:textColor="#164641"
-        android:fontFamily="@font/satoshi_medium"
+        android:textColor="@color/black"
         app:layout_constraintBottom_toBottomOf="@+id/iv_profile_picture"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="@+id/iv_profile_picture" />
@@ -75,7 +73,6 @@
         android:layout_height="wrap_content"
         android:fontFamily="@font/poppins"
         android:text=" · "
-        android:textColor="@color/black"
         android:textSize="14sp"
         android:textStyle="bold"
         app:layout_constraintStart_toEndOf="@+id/tv_username"

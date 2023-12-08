@@ -1,12 +1,13 @@
 <resources xmlns:tools="http://schemas.android.com/tools">
     <!-- Base application theme. -->
-    <style name="Base.Theme.TripTracker" parent="Theme.Material3.Light.NoActionBar">
+    <style name="Base.Theme.TripTracker" parent="Theme.AppCompat.Light.NoActionBar">
         <!-- Customize your light theme here. -->
         <!-- <item name="colorPrimary">@color/my_light_primary</item> -->
         <item name="colorPrimary">@color/dark_green</item>
         <item name="colorSecondaryContainer">@color/dark_green</item>
-        <item name="android:statusBarColor">@color/white</item>
+        <item name="android:statusBarColor">@android:color/transparent</item>
         <item name="android:windowLightStatusBar">true</item>
+        <item name="buttonStyle">@style/Widget.Base.Button</item>
     </style>
 
     <style name="Theme.TripTracker" parent="Base.Theme.TripTracker" />
@@ -20,4 +21,37 @@
         <item name="android:windowLightStatusBar">false</item>
     </style>
 
+    <style name="Widget.Base.Button" parent="Widget.AppCompat.Button">
+        <item name="android:minHeight">0dp</item>
+        <item name="android:background">@drawable/bg_btn_primary</item>
+        <item name="android:paddingVertical" tools:targetApi="o">14dp</item>
+        <item name="android:textAllCaps">false</item>
+        <item name="android:textSize">16sp</item>
+        <item name="android:fontFamily">@font/poppins_bold</item>
+        <item name="android:textColor">@color/white</item>
+    </style>
+
+    <style name="Widget.Base.Button.Pill" parent="Widget.AppCompat.Button">
+        <item name="android:minHeight">28dp</item>
+        <item name="android:minWidth">62dp</item>
+        <item name="android:background">@drawable/bg_btn_primary_pill</item>
+        <item name="android:paddingVertical" tools:targetApi="o">6dp</item>
+        <item name="android:paddingHorizontal" tools:targetApi="o">16dp</item>
+        <item name="android:textAllCaps">false</item>
+        <item name="android:textSize">12sp</item>
+        <item name="android:fontFamily">@font/satoshi_medium</item>
+        <item name="android:textColor">@color/white</item>
+    </style>
+
+    <style name="TabTextStyle" parent="TextAppearance.Design.Tab">
+        <item name="android:textSize">16sp</item>
+        <item name="android:fontFamily">@font/satoshi_black</item>
+        <item name="android:textAllCaps">false</item>
+        <item name="textAllCaps">false</item>
+    </style>
+
+    <style name="fab_rounded">
+        <item name="cornerFamily">rounded</item>
+        <item name="cornerSize">50%</item>
+    </style>
 </resources>
