@@ -19,7 +19,7 @@ import com.google.firebase.database.ValueEventListener;
 
 import java.util.List;
 
-import das.mobile.triptracker.fragment.UpdatePostActivity;
+import das.mobile.triptracker.activity.UpdatePostActivity;
 import das.mobile.triptracker.databinding.ItemPostBinding;
 import das.mobile.triptracker.model.Post;
 import das.mobile.triptracker.model.User;

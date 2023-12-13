@@ -16,7 +16,7 @@
         android:theme="@style/Theme.TripTracker"
         tools:targetApi="31">
         <activity
-            android:name=".fragment.UpdatePostActivity"
+            android:name=".activity.UpdatePostActivity"
             android:exported="false" />
         <activity
             android:name=".activity.OnBoarding4Activity"

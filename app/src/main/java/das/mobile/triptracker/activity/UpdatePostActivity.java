@@ -1,4 +1,4 @@
-package das.mobile.triptracker.fragment;
+package das.mobile.triptracker.activity;
 
 import android.os.Bundle;
 import android.view.View;
